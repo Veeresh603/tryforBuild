@@ -87,7 +87,7 @@ function ComingSoon({ data }) {
         <div className="coming_soon_left">
           <GatsbyImage
             className="image"
-            image={coming_soon_media.childImageSharp.gatsbyImageData}
+            image={coming_soon_media.localFile.childImageSharp.gatsbyImageData}
             alt="coming_soon_image"
           />
         </div>
