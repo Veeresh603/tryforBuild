@@ -107,7 +107,7 @@ const Wrapper = styled.div`
     grid-area: 1/2/2/11;
     @media (max-width:479px){
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
     }
   }
   .slick-slide img {
@@ -170,21 +170,21 @@ const Wrapper = styled.div`
     width: 100% !important;
     position: relative;
     @media (max-width: 479px) {
-      margin: 20px 0px;
+      margin: 0px 0px;
     }
   }
   .latest_news_section_image {
     display: block;
     height: auto;
     @media (max-width: 479px) {
-      height: 400px;
+      height: auto;
     }
     .gatsby-image-wrapper {
       width: 100%;
       border-radius: 15px;
 
       @media (max-width : 479px){
-        height: 400px;
+        height: auto;
       }
     }
   }

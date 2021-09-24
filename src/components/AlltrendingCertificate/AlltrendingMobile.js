@@ -106,7 +106,7 @@ export default function AlltrendingMobile({ data, value }) {
             }`}
           >
             <div className="icon">
-              <img src={d.icon.publicURL} alt="certificate popular course" />
+              <img src={d.icon.url} alt="certificate popular course" />
             </div>
             <Typography className="bootcamp_accordion_title">
               {d.main_title}

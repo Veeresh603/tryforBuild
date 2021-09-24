@@ -19,7 +19,7 @@ h2 {
     font-size: 24px;
     margin: 5px 0;
     transition: 1s ease-in-out;
-    font-weight: 500;
+    font-weight: 600 !important;
     font-size: 22px;
 
     @media (max-width: 479px){

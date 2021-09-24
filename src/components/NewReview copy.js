@@ -137,7 +137,7 @@ const Wrapper = styled.div`
     height: auto;
     grid-template-columns: repeat(11, 1fr);
     grid-template-rows: 420px auto;
-    margin-top: 3%;
+    margin-top: 4%;
     /* padding-top: 50px; */
   }
 

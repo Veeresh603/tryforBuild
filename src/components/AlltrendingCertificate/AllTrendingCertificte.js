@@ -397,9 +397,9 @@ const Wrapper = styled.div`
     grid-area: 1/2/2/11;
     
     @media (max-width: 479px) {
-      grid-area: 1/1/2/12;
+      grid-area: 1/2/2/11;
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
     }
   }
   .alltrending_sub_heading {

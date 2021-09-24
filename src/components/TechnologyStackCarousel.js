@@ -52,10 +52,7 @@ function OurWork(props) {
           {data.map((d) => {
             return (
               <div className="first" key={d.id}>
-                <img
-                  src={d.technologyStack_media.url}
-                  alt="technology stack"
-                />
+                <img src={d.technologyStack_media.url} alt="technology stack" />
               </div>
             )
           })}
@@ -69,7 +66,7 @@ export default OurWork
 
 const Wrapper = styled.div`
   /* margin-top:100px; */
-  grid-area: auto/2/auto/11;
+  grid-area: auto/1/auto/12;
   width: 100%;
   height: auto;
   display: flex;
@@ -154,10 +151,11 @@ const Wrapper = styled.div`
     margin-bottom: 3%;
     display: flex;
 
-    justify-content: center;
+    justify-content: flex-start;
     @media (max-width: 479px) {
+      grid-area: 1/1/2/12;
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
     }
   }
 

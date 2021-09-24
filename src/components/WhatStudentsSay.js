@@ -120,7 +120,7 @@ const Wrapper = styled.div`
   .heading {
     grid-area: 1/2/2/11;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
   }
   .what_students_say_wrapper {
     grid-area: 2/2/3/11;

@@ -8,6 +8,7 @@ import ReactTooltip from "react-tooltip"
 import box from "../../images/box(1).png"
 import question from "../../images/question-mark.png"
 import ReactMarkdown from "react-markdown"
+import HeadingBorderAnim from "../HeadingBorderAnim"
 
 // import linkedin from "../../images/linkedin.svg"
 
@@ -36,7 +37,7 @@ function WhatWeAreThinking(props) {
     <Wrapper>
       <div className="section_right">
         <div className="uppersection">
-          <h2 style={{ fontWeight: "500", fontSize: "22px" }}>{props.title}</h2>
+          <HeadingBorderAnim>{props.title}</HeadingBorderAnim>
         </div>
         <div>
           <SelectDay>
@@ -127,9 +128,9 @@ function WhatWeAreThinking(props) {
       <div className="section_left">
         <div className="section_left_column">
           <div className="uppersection">
-            <h2 style={{ fontWeight: "500", fontSize: "22px" }}>
+            <HeadingBorderAnim>
               {props.discord.title}
-            </h2>
+            </HeadingBorderAnim>
           </div>
           <div className="text">
             <div className="news_image">
@@ -419,6 +420,7 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     padding-bottom: 50px;
+    margin-top: 3%;
     .news_image{
       display:block;
       .gatsby-image-wrapper{

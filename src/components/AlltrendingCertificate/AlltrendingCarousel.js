@@ -94,7 +94,7 @@ function AlltrendingCarousel(props) {
                           marginBottom: "0px",
                         }}
                       >
-                        In Association with{" "}
+                        In Association with
                       </h4>
                       <div className="in_association_with_section">
                         <div className="partners_logo_section">
@@ -104,7 +104,7 @@ function AlltrendingCarousel(props) {
                                 <img
                                   className="partners"
                                   style={{ width: "100%", height: "100%" }}
-                                  src={logo.technologyStack_media.publicURL}
+                                  src={logo.technologyStack_media.url}
                                   alt=""
                                 />
                               </div>
@@ -196,7 +196,7 @@ function AlltrendingCarousel(props) {
                                 <div className="partners_logo" key={l.id}>
                                   <img
                                     className="partners"
-                                    src={logo.technologyStack_media.publicURL}
+                                    src={logo.technologyStack_media.url}
                                     alt=""
                                     style={{ width: "100%", height: "100%" }}
                                   />
