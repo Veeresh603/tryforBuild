@@ -126,7 +126,7 @@ const Wrapper = styled.div`
     grid-area: 2/2/3/11;
     display: flex;
     flex-direction: row;
-    margin-top: 3%;
+    margin-top: 4%;
   }
   .what_students_say_section {
     width: 259.67px;

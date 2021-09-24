@@ -439,6 +439,7 @@ const Wrapper = styled.div`
   @media (max-width: 479px){
     .text{
       width: 100% !important;
+      margin-top: 4%;
     }
   }
   h4 {

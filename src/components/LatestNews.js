@@ -69,7 +69,8 @@ function LatestNews(props) {
                   <div className="latest_news_section_image">
                     <GatsbyImage
                       image={
-                        d.news_update_image.localFile.childImageSharp.gatsbyImageData
+                        d.news_update_image.localFile.childImageSharp
+                          .gatsbyImageData
                       }
                       alt="upcoming events certisured"
                     />
@@ -105,7 +106,7 @@ const Wrapper = styled.div`
   }
   .latest_news_heading {
     grid-area: 1/2/2/11;
-    @media (max-width:479px){
+    @media (max-width: 479px) {
       display: flex;
       justify-content: flex-start;
     }
@@ -132,6 +133,10 @@ const Wrapper = styled.div`
     display: grid;
     grid-template-columns: repeat(11, 1fr);
     margin-top: 3%;
+
+    @media (max-width: 479px) {
+      margin-top: 4%;
+    }
   }
   .slick-list {
     grid-area: 1/2/2/11;
@@ -183,7 +188,7 @@ const Wrapper = styled.div`
       width: 100%;
       border-radius: 15px;
 
-      @media (max-width : 479px){
+      @media (max-width: 479px) {
         height: auto;
       }
     }

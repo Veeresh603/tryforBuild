@@ -419,7 +419,7 @@ const Wrapper = styled.div`
   .main_alltrending_wrapper {
     display: flex;
     grid-area: 3/1/4/12;
-    margin-top: 3%;
+    margin-top: 4%;
     width: 100%;
     align-items: center;
     justify-content: center;

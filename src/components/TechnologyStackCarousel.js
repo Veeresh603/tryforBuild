@@ -65,7 +65,6 @@ function OurWork(props) {
 export default OurWork
 
 const Wrapper = styled.div`
-  /* margin-top:100px; */
   grid-area: auto/1/auto/12;
   width: 100%;
   height: auto;
@@ -116,10 +115,7 @@ const Wrapper = styled.div`
     display: flex;
     justify-content: flex-end;
   }
-  /* img {
-    width: 100%;
-    height: auto;
-  } */
+
   h4 {
     width: 90%;
     background-color: #f8f8f8;
@@ -153,6 +149,8 @@ const Wrapper = styled.div`
 
     justify-content: flex-start;
     @media (max-width: 479px) {
+      margin-bottom: 4%;
+
       grid-area: 1/2/2/11;
       display: flex;
       justify-content: flex-start;
