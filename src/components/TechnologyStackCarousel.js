@@ -153,7 +153,7 @@ const Wrapper = styled.div`
 
     justify-content: flex-start;
     @media (max-width: 479px) {
-      grid-area: 1/1/2/12;
+      grid-area: 1/2/2/11;
       display: flex;
       justify-content: flex-start;
     }
