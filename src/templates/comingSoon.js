@@ -4,6 +4,7 @@ import styled from "styled-components"
 import addToMailchimp from "gatsby-plugin-mailchimp"
 import { graphql } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
+import NumberCounter from "../components/NumberCounter"
 
 function ComingSoon({ data }) {
   const {
@@ -91,7 +92,12 @@ function ComingSoon({ data }) {
             alt="coming_soon_image"
           />
         </div>
+       
       </Container>
+      <div>
+      
+
+      </div>
     </Wrapper>
   )
 }

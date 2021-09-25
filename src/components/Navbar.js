@@ -3,31 +3,29 @@ import links from "../constants/links"
 import styled from "styled-components"
 import { Link } from "gatsby"
 import FormDialog from "../components/FormDialogcopy/FormDialog"
-import './navbar.css'
+import "./navbar.css"
 
 const Navbar = ({ Logo }) => {
   const [isOpen, setNav] = useState(false)
-  const [colorChange, setColorchange] = useState(false);
-  const changeNavbarColor = () =>{
-     if(window.scrollY >= 80){
-       setColorchange(true);
-     }
-     else{
-       setColorchange(false);
-     }
-  };
+  const [colorChange, setColorchange] = useState(false)
+  const changeNavbarColor = () => {
+    if (window.scrollY >= 80) {
+      setColorchange(true)
+    } else {
+      setColorchange(false)
+    }
+  }
   React.useEffect(() => {
-    window.addEventListener('scroll', changeNavbarColor);
-     
-    return () => window.removeEventListener('scroll', changeNavbarColor)
+    window.addEventListener("scroll", changeNavbarColor)
+
+    return () => window.removeEventListener("scroll", changeNavbarColor)
   }, [])
 
-
   const toggleNav = () => {
-    setNav(isOpen => !isOpen)
+    setNav((isOpen) => !isOpen)
   }
   return (
-    <NavStyles className={colorChange ? 'navbar colorChange' : 'navbar'}>
+    <NavStyles className={colorChange ? "navbar colorChange" : "navbar"}>
       <div className="masthead">
         <Link to="/">
           <img src={Logo} alt="Analogica Logo" />
@@ -53,7 +51,6 @@ const Navbar = ({ Logo }) => {
             </li>
           )
         })}
-     
 
         <FormDialog
           id="letstalk"
