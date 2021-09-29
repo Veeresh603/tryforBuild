@@ -64,7 +64,7 @@ module.exports = {
     {
       resolve: `gatsby-source-strapi`,
       options: {
-        apiURL: process.env.STRAPI_API_URL,
+        apiURL: 'http://localhost:1337',
         queryLimit: 1000, // Default to 100
         collectionTypes: [
           `author`,
@@ -102,7 +102,10 @@ module.exports = {
           `home-discords`,
           `footer-links`,
           `coming-soon-pages`,
-          `bootcamp-landing-pages`
+          `bootcamp-landing-pages`,
+          `blog-tags`,
+          `blogs-categories`,
+          `blog-authors`
 
         ],
         singleTypes: [`home`],

@@ -82,6 +82,7 @@ function LatestNews(props) {
                     <Link to={d.link_to}>Learn More</Link>
                   </div>
                 </div>
+                
               </Link>
             )
           })}

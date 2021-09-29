@@ -33,6 +33,11 @@ exports.createPages = async ({ graphql, actions }) => {
             slug
           }
         }
+        blogs: allStrapiBlogs {
+          nodes {
+            blog_slug
+          }
+        }
       }
     `
   )
@@ -79,6 +84,15 @@ exports.createPages = async ({ graphql, actions }) => {
       component: path.resolve(`src/templates/bootcampPages.js`),
       context: {
         slug: b.slug,
+      },
+    })
+  })
+  result.data.blogs.nodes.forEach((b) => {
+    createPage({
+      path: `${b.blog_slug}`,
+      component: path.resolve(`src/templates/singleBlogPage.js`),
+      context: {
+        blog_slug: b.blog_slug,
       },
     })
   })
