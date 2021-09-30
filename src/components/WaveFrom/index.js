@@ -25,6 +25,7 @@ export default class index extends Component {
       responsive: true,
       waveColor: "#EFEFEF",
       cursorColor: "transparent",
+      overflow: "hidden !important",
     })
 
     this.waveform.load(track)
@@ -56,11 +57,18 @@ const WaveformContianer = styled.div`
   height: 100px;
   width: 100%;
   background: transparent;
+  @media (max-width: 479px) {
+    flex-wrap: wrap-reverse;
+    margin-top: 30px;
+  }
 `
 
 const Wave = styled.div`
   width: 100%;
   height: 90px;
+  #waveform wave {
+    overflow: hidden !important;
+  }
   @media (max-width: 479px) {
     height: auto;
   }
