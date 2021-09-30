@@ -5,6 +5,7 @@ import { Link } from "gatsby"
 import blog from "../images/blogPexels.jpg"
 import { graphql } from "gatsby"
 import ReactPaginate from "react-paginate"
+import {GatsbyImage} from "gatsby-plugin-image"
 
 function Blogs({ data }) {
   const emptyQuery = ""
@@ -88,6 +89,7 @@ function Blogs({ data }) {
     const query = event.target.value
 
     const posts = data.allStrapiBlogs.nodes || []
+    const category = data.allStrapiBlogsCategories.nodes || []
 
     const filteredData = posts.filter((post) => {
       const { title, shortDescrption } = post
@@ -178,56 +180,51 @@ function Blogs({ data }) {
               <AiOutlineSearch />
             </div>
           </div>
-          {data.allStrapiBlogsCategories.nodes
-            .slice(offset, offset + perPage)
-            .map((d) => {
+          {posts.slice(offset, offset + perPage).map((d) => {
+            return d.blogs_categories.map((c) => {
               return (
-                d.category_name === category &&
-                d.blogs.map((c) => {
-                  return (
-                    <div className="blogs_container">
-                      <Link to={`/${c.blog_slug}`}>
-                        <div className="blog_image">
-                          <img src={blog} alt="" />
-                        </div>
-                        <h4 style={{ textTransform: "uppercase" }}>
-                          {d.category_name}
-                        </h4>
-                        <p>{c.shortDescrption}</p>
-                      </Link>
-                    </div>
-                  )
-                })
-              )
-            })}
-
-          {data.allStrapiBlogs.nodes
-            .slice(offset, offset + perPage)
-            .map((d) => {
-              return d.blog_tags.map((c) => {
-                return (
-                  c.tag_title === tags && (
-                    <div className="blogs_container">
-                      <Link to={`/${d.blog_slug}`}>
-                        <div className="blog_image">
-                          <img src={blog} alt="" />
-                        </div>
-                        <h4 style={{ textTransform: "uppercase" }}>
-                          {d.blogs_categories[0].category_name}
-                        </h4>
-                        <p>{d.shortDescrption}</p>
-                      </Link>
-                    </div>
-                  )
+                c.category_name === category && (
+                  <div className="blogs_container">
+                    <Link to={`${d.blog_slug}`}>
+                      <div className="blog_image">
+                        <GatsbyImage image={d.image.localFile.childImageSharp.gatsbyImageData} alt="" />
+                      </div>
+                      <h4 style={{ textTransform: "uppercase" }}>
+                        {c.category_name}
+                      </h4>
+                      <p>{d.shortDescrption}</p>
+                    </Link>
+                  </div>
                 )
-              })
-            })}
+              )
+            })
+          })}
+
+          {posts.slice(offset, offset + perPage).map((d) => {
+            return d.blog_tags.map((c) => {
+              return (
+                c.tag_title === tags && (
+                  <div className="blogs_container">
+                    <Link to={`${d.blog_slug}`}>
+                      <div className="blog_image">
+                        <GatsbyImage image={d.image.localFile.childImageSharp.gatsbyImageData} alt="" />
+                      </div>
+                      <h4 style={{ textTransform: "uppercase" }}>
+                        {d.blogs_categories[0].category_name}
+                      </h4>
+                      <p>{d.shortDescrption}</p>
+                    </Link>
+                  </div>
+                )
+              )
+            })
+          })}
           {show &&
             posts.slice(offset, offset + perPage).map((d) => (
               <div className="blogs_container">
-                <Link to={`/${d.blog_slug}`}>
+                <Link to={`${d.blog_slug}`}>
                   <div className="blog_image">
-                    <img src={blog} alt="" />
+                    <GatsbyImage image={d.image.localFile.childImageSharp.gatsbyImageData} alt="" />
                   </div>
                   <h4 style={{ textTransform: "uppercase" }}>
                     {d.blogs_categories[0].category_name}
@@ -267,6 +264,13 @@ export const query = graphql`
         blog_slug
         shortDescrption
         title
+        image {
+          localFile {
+            childImageSharp {
+              gatsbyImageData
+            }
+          }
+        }
         blog_tags {
           tag_title
           id
@@ -310,6 +314,7 @@ const Container = styled.div`
   grid-template-columns: repeat(11, 1fr);
   grid-template-rows: auto;
   margin-top: 100px;
+  margin-bottom: 100px;
   .heading {
     grid-area: 1/2/2/11;
   }
@@ -326,10 +331,10 @@ const Wrapper = styled.div`
   @media (max-width: 991px) {
     margin-top: 60px;
   }
-  a::selection {
+  /* a::selection {
     background-color: transparent;
     color: transparent;
-  }
+  } */
   button {
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
@@ -367,7 +372,7 @@ const Wrapper = styled.div`
       }
       .search__input {
         width: 100%;
-        padding: 18px 24px;
+        padding: 20px 24px;
         border: none;
         background-color: transparent;
         transition: transform 250ms ease-in-out;
@@ -430,7 +435,7 @@ const Wrapper = styled.div`
           color: var(--secondaryColor);
           transition: 0.2s ease-in-out;
           font-size: 16px;
-          font-weight: 400;
+          font-weight: 500;
           letter-spacing: 0.03em;
           outline: none;
           border: none;
@@ -576,7 +581,6 @@ const Wrapper = styled.div`
     }
     a::selection {
       background-color: transparent;
-      color: transparent;
     }
 
     a:focus {
@@ -616,13 +620,14 @@ const Wrapper = styled.div`
       }
       h4 {
         font-style: normal;
-        font-weight: 400;
-        font-size: 16px;
+        font-weight: 600;
+        font-size: 14px;
         line-height: 20px;
         letter-spacing: 0.03em;
         color: #000000;
         margin-bottom: 0;
         transition: 0.3s ease-out;
+        color: var(--purpleColor);
         @media (max-width: 479px) {
           font-size: 14px;
         }
@@ -641,23 +646,31 @@ const Wrapper = styled.div`
         height: 340px;
         transition: 0.5s ease-in-out;
         transform: translateX(-10px);
-
+          .gatsby-image-wrapper{
+            width: 100%;
+            height: 100%;
+          }
         @media (max-width: 479px) {
           transform: translateX(0px);
+          height: 305px;
         }
       }
     }
   }
   .blog_paginate {
     grid-area: 2/1/3/2;
-    display: flex;
-    justify-content: center;
+
     @media (max-width: 991px) {
       grid-area: 3/1/4/3;
     }
-
+    li {
+      margin-left: 14px;
+    }
     ul {
       padding-left: 0px;
+    }
+    a {
+      border-radius: 6px !important;
     }
     .pagination {
       margin: 15px auto;
@@ -672,10 +685,13 @@ const Wrapper = styled.div`
     }
     .pagination > li > a {
       border: 1px solid var(--purpleColor);
-      padding: 5px 10px;
+      padding: 8px 20px;
       outline: none;
       cursor: pointer;
+      font-size: 1rem;
+      font-weight: 500;
       color: var(--secondaryColor);
+      border-radius: 6px;
     }
     .pagination > .active > a,
     .pagination > .active > span,

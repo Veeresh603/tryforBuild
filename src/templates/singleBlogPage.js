@@ -4,7 +4,7 @@ import linkedin from "../images/linkedin.svg"
 import twitter from "../images/twitter.svg"
 import ReactMarkdown from "react-markdown"
 import loadable from "@loadable/component"
-
+import AudioWave from "../components/WaveFrom/index"
 import { graphql, Link } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 
@@ -69,7 +69,7 @@ function SingleBlogPage({ data }) {
   return (
     <Wrapper>
       <div className="heading">
-        <Link to="/blogs">blogs</Link>
+        <a href="/blogs">blogs</a>
       </div>
 
       {/* title and category */}
@@ -99,7 +99,7 @@ function SingleBlogPage({ data }) {
           </div>
           <div className="author_name">
             <h3>{blog_author.name_and_surname}</h3>
-            <h5>{`Jun 21 2021 - ${single} min read`}</h5>
+            <h5>{`${data.strapiBlogs.published_date} - ${single} min read`}</h5>
           </div>
         </div>
         <div className="links_wrapper">
@@ -111,6 +111,18 @@ function SingleBlogPage({ data }) {
           </a>
         </div>
       </div>
+
+      {/* audio file */}
+      {!data.strapiBlogs.audio_file
+        ? null
+        : data.strapiBlogs.audio_file.show_or_hide && (
+            <div className="audio_file">
+              <h4 style={{ fontWeight: "600", fontSize: "1.3rem" }}>
+                {data.strapiBlogs.audio_file.title}
+              </h4>
+              <AudioWave url={data.strapiBlogs.audio_file.audio_file.url} />
+            </div>
+          )}
 
       {/* description */}
       <div className="blog_desc">
@@ -153,93 +165,113 @@ function SingleBlogPage({ data }) {
 
       {/* related blogs  */}
 
-      <div className="related_blogs">
-        <div className="related_blogs_heading">
-          <h6>related blogs</h6>
-        </div>
-        <div className="related_blogs_container_container">
-          {data.allStrapiBlogAuthors.nodes.map(
-            (d) =>
-              d.name_and_surname === blog_author.name_and_surname &&
-              (authorL < 3 ? (
-                d.blogs.map((b) => {
-                  setLength(b.Descrption.length / 200)
-                  return (
-                    <div className="related_blogs_container">
-                      <div className="title">
-                        <h2>{b.title}</h2>
-                      </div>
-                      <div className="timeline">
-                        <h6 style={{ fontWeight: "400", fontSize: "14.26px" }}>
-                          {`June 10 - ${readTime} min read`}
-                        </h6>
-                      </div>
-
-                      <div className="author_bio_wrapper">
-                        <div className="author_image">
-                          <GatsbyImage
-                            image={
-                              d.image.localFile.childImageSharp.gatsbyImageData
-                            }
-                            alt=""
-                          />
-                        </div>
-                        <div className="name_and_surname">
-                          <div className="name">
-                            <h4>{d.name_and_surname}</h4>
-                          </div>
-                          <div className="name">
-                            <h5>Designation</h5>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  )
-                })
-              ) : (
-                <Slider {...settings}>
-                  {d.blogs.map((b) => {
+      {authorL <= 2 ? (
+        <div
+          style={{
+            gridArea: "auto/2/auto/11",
+            width: "100px",
+            height: "100px",
+          }}
+        />
+      ) : (
+        <div className="related_blogs">
+          <div className="related_blogs_heading">
+            <h6>related blogs</h6>
+          </div>
+          <div className="related_blogs_container_container">
+            {data.allStrapiBlogAuthors.nodes.map(
+              (d) =>
+                d.name_and_surname === blog_author.name_and_surname &&
+                (authorL < 3 ? (
+                  d.blogs.map((b) => {
                     setLength(b.Descrption.length / 200)
                     return (
                       <div className="related_blogs_container">
-                        <div className="title">
-                          <h2>{b.title}</h2>
-                        </div>
-                        <div className="timeline">
-                          <h6
-                            style={{ fontWeight: "400", fontSize: "14.26px" }}
-                          >
-                            {`June 10 - ${readTime} min read`}
-                          </h6>
-                        </div>
+                        <Link to={`/blogs/${b.blog_slug}`}>
+                          <div className="title">
+                            <h2>{b.title}</h2>
+                          </div>
+                          <div className="timeline">
+                            <h6
+                              style={{ fontWeight: "400", fontSize: "14.26px" }}
+                            >
+                              {`June 10 - ${readTime} min read`}
+                            </h6>
+                          </div>
 
-                        <div className="author_bio_wrapper">
-                          <div className="author_image">
-                            <GatsbyImage
-                              image={
-                                d.image.localFile.childImageSharp
-                                  .gatsbyImageData
-                              }
-                              alt=""
-                            />
-                          </div>
-                          <div className="name_and_surname">
-                            <div className="name">
-                              <h4>{d.name_and_surname}</h4>
+                          <div className="author_bio_wrapper">
+                            <div className="author_image">
+                              <GatsbyImage
+                                image={
+                                  d.image.localFile.childImageSharp
+                                    .gatsbyImageData
+                                }
+                                alt=""
+                              />
                             </div>
-                            <div className="name">
-                              <h5>Designation</h5>
+                            <div className="name_and_surname">
+                              <div className="name">
+                                <h4>{d.name_and_surname}</h4>
+                              </div>
+                              <div className="name">
+                                <h5>{d.designation}</h5>
+                              </div>
                             </div>
                           </div>
-                        </div>
+                        </Link>
                       </div>
                     )
-                  })}
-                </Slider>
-              ))
-          )}
+                  })
+                ) : (
+                  <Slider {...settings}>
+                    {d.blogs.map((b) => {
+                      setLength(b.Descrption.length / 200)
+                      return (
+                        <div className="related_blogs_container">
+                          <Link to={`/blogs/${b.blog_slug}`}>
+                            <div className="title">
+                              <h2>{b.title}</h2>
+                            </div>
+                            <div className="timeline">
+                              <h6
+                                style={{
+                                  fontWeight: "400",
+                                  fontSize: "14.26px",
+                                }}
+                              >
+                                {`${b.published_date} - ${readTime} min read`}
+                              </h6>
+                            </div>
+
+                            <div className="author_bio_wrapper">
+                              <div className="author_image">
+                                <GatsbyImage
+                                  image={
+                                    d.image.localFile.childImageSharp
+                                      .gatsbyImageData
+                                  }
+                                  alt=""
+                                />
+                              </div>
+                              <div className="name_and_surname">
+                                <div className="name">
+                                  <h4>{d.name_and_surname}</h4>
+                                </div>
+                                <div className="name">
+                                  <h5>{d.designation}</h5>
+                                </div>
+                              </div>
+                            </div>
+                          </Link>
+                        </div>
+                      )
+                    })}
+                  </Slider>
+                ))
+            )}
+          </div>
         </div>
-      </div>
+      )}
     </Wrapper>
   )
 }
@@ -251,7 +283,7 @@ const Wrapper = styled.div`
   grid-template-columns: repeat(11, 1fr);
   grid-template-rows: auto;
   height: auto;
-  margin-top: 100px;
+  margin-top: 150px;
 
   .slick-slider {
     display: grid;
@@ -265,6 +297,9 @@ const Wrapper = styled.div`
 
   .slick-slide {
     margin: 0 20px;
+    @media (max-width: 479px) {
+      margin: 0 5px;
+    }
   }
 
   .slick-track {
@@ -309,6 +344,7 @@ const Wrapper = styled.div`
     grid-area: 2/3/3/10;
     display: flex;
     flex-direction: column;
+    margin-top: 3rem;
     @media (max-width: 771px) {
       grid-area: 2/2/3/11;
     }
@@ -331,11 +367,12 @@ const Wrapper = styled.div`
         font-weight: 600;
         font-size: 42px;
         color: #151515;
+        margin-top: 0px;
         @media (max-width: 767px) {
           font-size: 38px;
         }
         @media (max-width: 550px) {
-          font-size: 35px;
+          font-size: 24px;
         }
       }
     }
@@ -372,6 +409,11 @@ const Wrapper = styled.div`
         height: 99.95px;
         margin-right: 10px;
         border-radius: 50%;
+
+        @media (max-width: 479px) {
+          width: 76px;
+          height: 76px;
+        }
         .gatsby-image-wrapper,
         img {
           width: 100%;
@@ -431,22 +473,73 @@ const Wrapper = styled.div`
       }
     }
   }
-  .blog_desc {
+
+  .audio_file {
     grid-area: 4/4/5/9;
-    margin-top: 50px;
-    @media (max-width: 479px) {
-      margin-top: 20px;
+    margin-top: 30px;
+    h4 {
+      @media (max-width: 479px) {
+        margin-bottom: 0px;
+        font-size: 1rem !important;
+      }
     }
     @media (max-width: 991px) {
       grid-area: 4/3/5/10;
     }
-
-    @media (max-width: 767px) {
+    @media (max-width: 991px) {
       grid-area: 4/2/5/11;
     }
-    h2 {
+  }
+
+  .blog_desc {
+    grid-area: 5/4/6/9;
+    margin-top: 0px;
+
+    @media (max-width: 479px) {
+      margin-top: 20px;
+      h1 {
+        font-size: 24px;
+        font-weight: 600;
+      }
+      h2 {
+        font-size: 22px;
+        font-weight: 500;
+      }
+      h3 {
+        font-size: 20px;
+        font-weight: 500;
+      }
+    }
+    @media (max-width: 991px) {
+      grid-area: 5/3/6/10;
+    }
+
+    @media (max-width: 767px) {
+      grid-area: 5/2/6/11;
+    }
+    h1 {
       font-weight: 600;
-      font-size: 26.81px;
+      font-size: 24px;
+      letter-spacing: 0.07em;
+    }
+    h2 {
+      font-weight: 500;
+      font-size: 22px;
+      letter-spacing: 0.07em;
+    }
+    h3 {
+      font-weight: 500;
+      font-size: 20px;
+      letter-spacing: 0.07em;
+    }
+    h4 {
+      font-weight: 500;
+      font-size: 18px;
+      letter-spacing: 0.07em;
+    }
+    h5 {
+      font-weight: 500;
+      font-size: 16px;
       letter-spacing: 0.07em;
     }
     a {
@@ -475,16 +568,16 @@ const Wrapper = styled.div`
   }
 
   .about_the_author {
-    grid-area: 5/4/6/9;
+    grid-area: 7/4/8/9;
     display: flex;
     flex-direction: column;
     width: 100%;
     height: auto;
     @media (max-width: 991px) {
-      grid-area: 5/3/6/10;
+      grid-area: 7/3/8/10;
     }
     @media (max-width: 991px) {
-      grid-area: 5/2/6/11;
+      grid-area: 7/2/8/11;
     }
     .heading_heading {
       h6 {
@@ -513,7 +606,10 @@ const Wrapper = styled.div`
         width: 86.01px;
         height: 86.01px;
         border-radius: 92.3163px;
-
+        @media (max-width: 479px) {
+          width: 45px;
+          height: 45px;
+        }
         .gatsby-image-wrapper {
           width: 100%;
           height: 100%;
@@ -548,6 +644,7 @@ const Wrapper = styled.div`
           }
           @media (max-width: 479px) {
             margin-bottom: 0px;
+            margin-top: 0px;
           }
         }
 
@@ -587,7 +684,7 @@ const Wrapper = styled.div`
     }
   }
   .related_blogs {
-    grid-area: 7/2/8/11;
+    grid-area: 8/2/9/11;
 
     padding: 50px 0;
 
@@ -613,6 +710,26 @@ const Wrapper = styled.div`
       h2 {
         margin: 0px;
       }
+
+      a {
+        text-decoration: none;
+      }
+      a::selection {
+        background-color: transparent;
+      }
+
+      a:focus {
+        @media (max-width: 479px) {
+          color: transparent;
+          background-color: transparent;
+          outline: none;
+        }
+      }
+      a:hover {
+        .title::before {
+          width: 60px;
+        }
+      }
     }
 
     .related_blogs_container {
@@ -629,16 +746,31 @@ const Wrapper = styled.div`
 
       .title {
         padding: 10px;
+        position: relative;
+        transition: 0.2s all ease-in-out;
+
         h2 {
           font-weight: 500;
           font-size: 20.8543px;
           line-height: 25px;
 
-          color: #151515;
+          color: #151515 !important;
           @media (max-width: 550px) {
             font-size: 17px;
           }
         }
+      }
+      .title::before {
+        position: absolute;
+        content: "";
+        bottom: 0;
+        width: 50px;
+        height: 8px;
+        background-color: var(--purpleColor);
+        transition: 0.2s all ease-in-out;
+      }
+      .timeline {
+        padding: 10px;
         h6 {
           font-weight: normal;
           font-size: 14.2px;
@@ -646,16 +778,14 @@ const Wrapper = styled.div`
 
           /* identical to box height */
 
-          color: #000000;
+          color: #000 !important;
           @media (max-width: 550px) {
-            font-size: 12px;
+            font-size: 12px !important;
           }
         }
       }
-      .timeline {
-        padding: 10px;
-      }
     }
+
     .author_bio_wrapper {
       display: flex;
       flex-direction: row;
@@ -666,7 +796,10 @@ const Wrapper = styled.div`
         display: block;
         width: 68.92px;
         height: 68.92px;
-
+        @media (max-width: 479px) {
+          width: 57.35px;
+          height: 57.35px;
+        }
         .gatsby-image-wrapper {
           width: 100%;
           height: 100%;
@@ -714,11 +847,21 @@ export const query = graphql`
     strapiBlogs(blog_slug: { eq: $blog_slug }) {
       title
       Descrption
+      blog_slug
+      published_date
+      audio_file {
+        title
+        show_or_hide
+        audio_file {
+          url
+        }
+      }
       blog_author {
         name_and_surname
         short_description
         twitter_url
         linkedin_url
+        designation
         image {
           localFile {
             childImageSharp {
@@ -737,6 +880,7 @@ export const query = graphql`
         short_description
         twitter_url
         linkedin_url
+        designation
         image {
           localFile {
             childImageSharp {
@@ -747,6 +891,8 @@ export const query = graphql`
         blogs {
           title
           Descrption
+          blog_slug
+          published_date
         }
       }
     }

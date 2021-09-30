@@ -91,9 +91,11 @@ function Layout(props) {
     <>
       <Helmet>
         {/* <script src="https://player.vimeo.com/api/player.js"></script> */}
-        <script type="application/ld+json"> 
+        <script type="application/ld+json">
           {JSON.stringify(BusinessSchema)}
         </script>
+        {/* <script src="https://unpkg.com/wavesurfer.js"></script> */}
+
         <script
           defer
           type="module"

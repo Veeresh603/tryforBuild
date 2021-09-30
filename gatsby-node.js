@@ -89,7 +89,7 @@ exports.createPages = async ({ graphql, actions }) => {
   })
   result.data.blogs.nodes.forEach((b) => {
     createPage({
-      path: `${b.blog_slug}`,
+      path: `/blogs/${b.blog_slug}`,
       component: path.resolve(`src/templates/singleBlogPage.js`),
       context: {
         blog_slug: b.blog_slug,
@@ -99,3 +99,17 @@ exports.createPages = async ({ graphql, actions }) => {
 }
 
 
+exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
+  if (stage === "build-html" || stage === "develop-html") {
+    actions.setWebpackConfig({
+      module: {
+        rules: [
+          {
+            test: /wavesurfer.js/,
+            use: loaders.null(),
+          },
+        ],
+      },
+    })
+  }
+}
