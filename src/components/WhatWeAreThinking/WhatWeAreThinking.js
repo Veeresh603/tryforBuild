@@ -9,7 +9,7 @@ import box from "../../images/box(1).png"
 import question from "../../images/question-mark.png"
 import ReactMarkdown from "react-markdown"
 import HeadingBorderAnim from "../HeadingBorderAnim"
-import { BsInfoCircle } from "@react-icons/all-files/Bs/BsInfoCircle"
+import { BsInfoCircle } from "@react-icons/all-files/bs/BsInfoCircle"
 
 // import linkedin from "../../images/linkedin.svg"
 
