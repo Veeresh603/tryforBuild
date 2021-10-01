@@ -168,7 +168,7 @@ function SingleBlogPage({ data }) {
       {authorL <= 2 ? (
         <div
           style={{
-            gridArea: "auto/2/auto/11",
+            gridArea: "8/2/9/11",
             width: "100px",
             height: "100px",
           }}

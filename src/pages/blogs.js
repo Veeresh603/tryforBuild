@@ -124,7 +124,7 @@ function Blogs({ data }) {
               <input
                 className="search__input"
                 type="text"
-                placeholder="Search"
+                placeholder="search for blogs"
                 onChange={handleInputChange}
               />
               <div className="search_icon">
@@ -390,7 +390,6 @@ const Wrapper = styled.div`
         justify-content: center;
         align-items: center;
         border-radius: 69.3284px;
-        cursor: pointer;
 
         svg {
           color: #fff;
@@ -399,7 +398,7 @@ const Wrapper = styled.div`
       }
       .search__input::placeholder {
         color: rgba(87, 87, 86, 0.8) !important;
-        text-transform: uppercase;
+        text-transform: lowercase;
         letter-spacing: 1.5px;
       }
     }
@@ -559,7 +558,6 @@ const Wrapper = styled.div`
         justify-content: center;
         align-items: center;
         border-radius: 69.3284px;
-        cursor: pointer;
 
         svg {
           color: #fff;
@@ -568,7 +566,7 @@ const Wrapper = styled.div`
       }
       .search__input::placeholder {
         color: rgba(87, 87, 86, 0.8) !important;
-        text-transform: uppercase;
+        text-transform: lowercase;
         letter-spacing: 1.5px;
       }
     }

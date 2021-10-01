@@ -17,6 +17,8 @@ export default class index extends Component {
 
     this.waveform = WaveSurfer.create({
       barWidth: 3,
+      barRadius: 3,
+
       cursorWidth: 1,
       container: "#waveform",
       backend: "WebAudio",
@@ -66,6 +68,7 @@ const WaveformContianer = styled.div`
 const Wave = styled.div`
   width: 100%;
   height: 90px;
+  flex-shrink: 0;
   #waveform wave {
     overflow: hidden !important;
   }
@@ -78,8 +81,10 @@ const PlayButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 60px;
   height: 60px;
+  max-width: 60px;
+  width: 60px;
+  flex-shrink: 0;
   background: var(--purpleColor);
   border-radius: 50%;
   border: none;
@@ -99,7 +104,7 @@ const PlayButton = styled.button`
     height: 40px;
   }
   &:hover {
-    transform: scale(1.1);
+    transform: scale(0.9);
   }
   &:focus {
     background-color: none;
