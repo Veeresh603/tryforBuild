@@ -82,7 +82,6 @@ function LatestNews(props) {
                     <Link to={d.link_to}>Learn More</Link>
                   </div>
                 </div>
-                
               </Link>
             )
           })}
@@ -146,9 +145,7 @@ const Wrapper = styled.div`
   // buttons
 
   .main_left_wrapper {
-    position: absolute;
     right: 7%;
-    top: 28%;
 
     @media (max-width: 479px) {
       right: 5%;
@@ -156,8 +153,6 @@ const Wrapper = styled.div`
     }
   }
   .main_right_wrapper {
-    position: absolute;
-    top: 28%;
     left: 7%;
     @media (max-width: 479px) {
       left: 5%;

@@ -14,7 +14,11 @@ function RightArrow(props) {
 
 export default RightArrow
 const Wrapper = styled.div`
-
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
   .arrow_right {
     width: 100px;
     height: 100px;

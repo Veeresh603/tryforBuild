@@ -12,8 +12,12 @@ function LeftArrow(props) {
   )
 }
 
-
 const Wrapper = styled.div`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
   .arrow_left {
     width: 100px;
     height: 100px;
@@ -32,6 +36,5 @@ const Wrapper = styled.div`
   .arrow_left:hover {
     transform: rotate(-45deg) scale(1.1);
   }
-
 `
 export default LeftArrow

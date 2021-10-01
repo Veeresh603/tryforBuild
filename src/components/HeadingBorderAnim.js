@@ -27,7 +27,7 @@ h2 {
     }
   }
 
-  .borderLeftRight {
+  /* .borderLeftRight {
     display: inline-block;
     position: relative;
     cursor: default;
@@ -49,7 +49,7 @@ h2 {
   .borderLeftRight:hover::after {
     transform: scaleX(1);
     transform-origin: bottom left;
-  }
+  } */
 
 
 `

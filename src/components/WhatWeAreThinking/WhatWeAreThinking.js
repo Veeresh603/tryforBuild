@@ -9,6 +9,7 @@ import box from "../../images/box(1).png"
 import question from "../../images/question-mark.png"
 import ReactMarkdown from "react-markdown"
 import HeadingBorderAnim from "../HeadingBorderAnim"
+import { BsInfoCircle } from "@react-icons/all-files/Bs/BsInfoCircle"
 
 // import linkedin from "../../images/linkedin.svg"
 
@@ -128,9 +129,7 @@ function WhatWeAreThinking(props) {
       <div className="section_left">
         <div className="section_left_column">
           <div className="uppersection">
-            <HeadingBorderAnim>
-              {props.discord.title}
-            </HeadingBorderAnim>
+            <HeadingBorderAnim>{props.discord.title}</HeadingBorderAnim>
           </div>
           <div className="text">
             <div className="news_image">
@@ -146,7 +145,7 @@ function WhatWeAreThinking(props) {
 
               <div className="question_icon">
                 <a data-tip data-for="happyFace">
-                  <img src={question} alt="discord" />
+                  <BsInfoCircle />
                 </a>
                 <ReactTooltip
                   id="happyFace"
@@ -260,9 +259,8 @@ const Wrapper = styled.div`
     align-items: center;
     margin-top: 10px;
     margin-left: 15px;
-    img {
-      width: 30px;
-      height: 30px;
+    svg {
+      font-size: 30px;
     }
   }
   .bottom_section p {
@@ -421,9 +419,9 @@ const Wrapper = styled.div`
     flex-direction: column;
     padding-bottom: 50px;
     margin-top: 3%;
-    .news_image{
-      display:block;
-      .gatsby-image-wrapper{
+    .news_image {
+      display: block;
+      .gatsby-image-wrapper {
         width: 100%;
         border-radius: 6px;
       }
@@ -436,8 +434,8 @@ const Wrapper = styled.div`
     }
   }
 
-  @media (max-width: 479px){
-    .text{
+  @media (max-width: 479px) {
+    .text {
       width: 100% !important;
       margin-top: 4%;
     }
