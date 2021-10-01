@@ -19,11 +19,11 @@ function SingleBlogPage({ data }) {
   const s = Descrption.length / 200
   const s1 = s - Math.round(s)
   const single = Math.round(s1 * 10)
-  console.log(authorL)
   React.useEffect(() => {
     const Bloglength = data.allStrapiBlogAuthors.nodes.filter(
       (d) => d.name_and_surname === blog_author.name_and_surname
     )
+
     console.log(Bloglength[0].blogs.length)
     setAuthorL(Bloglength[0].blogs.length)
   }, [])
@@ -69,7 +69,9 @@ function SingleBlogPage({ data }) {
   return (
     <Wrapper>
       <div className="heading">
-        <a href="/blogs">blogs</a>
+        <a to="/blogs" href="/blogs">
+          blogs
+        </a>
       </div>
 
       {/* title and category */}
@@ -120,7 +122,12 @@ function SingleBlogPage({ data }) {
               <h4 style={{ fontWeight: "600", fontSize: "1.3rem" }}>
                 {data.strapiBlogs.audio_file.title}
               </h4>
-              <AudioWave url={data.strapiBlogs.audio_file.audio_file.url} />
+              <AudioWave>
+                <audio
+                  id="track"
+                  src={data.strapiBlogs.audio_file.audio_file.url}
+                />
+              </AudioWave>
             </div>
           )}
 
@@ -187,7 +194,7 @@ function SingleBlogPage({ data }) {
                     setLength(b.Descrption.length / 200)
                     return (
                       <div className="related_blogs_container">
-                        <Link to={`/blogs/${b.blog_slug}`}>
+                        <a href={`/blogs/${b.blog_slug}`}>
                           <div className="title">
                             <h2>{b.title}</h2>
                           </div>
@@ -218,7 +225,7 @@ function SingleBlogPage({ data }) {
                               </div>
                             </div>
                           </div>
-                        </Link>
+                        </a>
                       </div>
                     )
                   })
@@ -228,7 +235,7 @@ function SingleBlogPage({ data }) {
                       setLength(b.Descrption.length / 200)
                       return (
                         <div className="related_blogs_container">
-                          <Link to={`/blogs/${b.blog_slug}`}>
+                          <a href={`/blogs/${b.blog_slug}`}>
                             <div className="title">
                               <h2>{b.title}</h2>
                             </div>
@@ -262,7 +269,7 @@ function SingleBlogPage({ data }) {
                                 </div>
                               </div>
                             </div>
-                          </Link>
+                          </a>
                         </div>
                       )
                     })}

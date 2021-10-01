@@ -173,7 +173,7 @@ function Blogs({ data }) {
             <input
               className="search__input"
               type="text"
-              placeholder="Search"
+              placeholder="search for blogs"
               onChange={handleInputChange}
             />
             <div className="search_icon">

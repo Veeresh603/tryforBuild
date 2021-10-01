@@ -45,7 +45,7 @@ export default class index extends Component {
           {!this.state.playing ? <FaPlay /> : <FaPause />}
         </PlayButton>
         <Wave id="waveform" />
-        <audio id="track" src={this.props.url} />
+        {this.props.children}
       </WaveformContianer>
     )
   }
