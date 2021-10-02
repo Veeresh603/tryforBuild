@@ -5,8 +5,7 @@ import FormControl from "@material-ui/core/FormControl"
 import NativeSelect from "@material-ui/core/NativeSelect"
 import Carousel from "react-grid-carousel"
 import ReactTooltip from "react-tooltip"
-import box from "../../images/box(1).png"
-import question from "../../images/question-mark.png"
+
 import ReactMarkdown from "react-markdown"
 import HeadingBorderAnim from "../HeadingBorderAnim"
 import { BsInfoCircle } from "@react-icons/all-files/bs/BsInfoCircle"
@@ -170,10 +169,7 @@ export default WhatWeAreThinking
 
 const Wrapper = styled.div`
   grid-area: auto/1/auto/12;
-  background: url("${box}");
   height: auto;
-  /* background-size: 100% 1465px; */
-  background-repeat: no-repeat;
   margin-bottom: 100px;
   display: grid;
   grid-template-columns: repeat(11, 1fr);

@@ -15,34 +15,34 @@ import "slick-carousel/slick/slick-theme.css"
 // import { withPrefix, Link } from "gatsby"
 
 function Layout(props) {
-  React.useEffect(() => {
-    var Tawk_API = Tawk_API || {}
-    Tawk_API.visitor = {
-      name: "visitor name",
-      email: "visitor@email.com",
-    }
-    var Tawk_LoadStart = new Date()
-    ;(function () {
-      var s1 = document.createElement("script"),
-        s0 = document.getElementsByTagName("script")[0]
-      s1.async = true
-      s1.src = "https://embed.tawk.to/612e22f7d6e7610a49b2e683/1fee3h5uh"
-      s1.charset = "UTF-8"
-      s1.setAttribute("crossorigin", "*")
-      s0.parentNode.insertBefore(s1, s0)
-    })()
+  // React.useEffect(() => {
+  //   var Tawk_API = Tawk_API || {}
+  //   Tawk_API.visitor = {
+  //     name: "visitor name",
+  //     email: "visitor@email.com",
+  //   }
+  //   var Tawk_LoadStart = new Date()
+  //   ;(function () {
+  //     var s1 = document.createElement("script"),
+  //       s0 = document.getElementsByTagName("script")[0]
+  //     s1.async = true
+  //     s1.src = "https://embed.tawk.to/612e22f7d6e7610a49b2e683/1fee3h5uh"
+  //     s1.charset = "UTF-8"
+  //     s1.setAttribute("crossorigin", "*")
+  //     s0.parentNode.insertBefore(s1, s0)
+  //   })()
 
-    Tawk_API.onLoad = function () {
-      Tawk_API.setAttributes(
-        {
-          name: "Name",
-          email: "email@email.com",
-          hash: "hash value",
-        },
-        function (error) {}
-      )
-    }
-  }, [])
+  //   Tawk_API.onLoad = function () {
+  //     Tawk_API.setAttributes(
+  //       {
+  //         name: "Name",
+  //         email: "email@email.com",
+  //         hash: "hash value",
+  //       },
+  //       function (error) {}
+  //     )
+  //   }
+  // }, [])
 
   const BusinessSchema = {
     "@context": "https://schema.org",

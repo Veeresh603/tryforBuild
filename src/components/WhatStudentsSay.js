@@ -2,6 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import HeadingBorder from "./HeadingBorderAnim"
 import { GatsbyImage } from "gatsby-plugin-image"
+import linkedin from "../images/linkedin.svg"
 
 function WhatStudentsSay({ data, home }) {
   const imagesLength = data.allreview.length
@@ -54,7 +55,22 @@ function WhatStudentsSay({ data, home }) {
         />
       </div>
       <div className="description">
-        <h4>{data.allreview[imageIndex].descrption}</h4>
+        <h4 style={{ fontWeight: "300" }}>
+          {data.allreview[imageIndex].descrption}
+        </h4>
+        <div className="review_name">
+          <h4>{data.allreview[imageIndex].name}</h4>
+          <h5>{data.allreview[imageIndex].company}</h5>
+        </div>
+        <div className="linkedin_icon">
+          <a href={data.allreview[imageIndex].linkedInUrl}>
+            <img
+              style={{ width: "30px", height: "30px" }}
+              src={linkedin}
+              alt={data.allreview[imageIndex].linkedInUrl}
+            />
+          </a>
+        </div>
       </div>
     </Wrapper>
   )
@@ -169,6 +185,24 @@ const Wrapper = styled.div`
   }
   .description {
     grid-area: 4/2/5/11;
+    transition: 0.2s ease-in-out;
+    .review_name {
+      border-bottom: 1px solid #d7d7d7;
+      h4 {
+        color: var(--secondaryColor);
+        font-weight: 600;
+        font-size: 1rem;
+        margin: 0;
+      }
+      h5 {
+        margin-top: 5px;
+        font-weight: 600;
+        font-size: 1rem;
+      }
+    }
+    .linkedin_icon {
+      margin-top: 10px;
+    }
 
     h4 {
       font-weight: 500;

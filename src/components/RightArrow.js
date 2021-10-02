@@ -19,6 +19,10 @@ const Wrapper = styled.div`
   bottom: 0;
   display: flex;
   align-items: center;
+  @media (max-width: 479px) {
+    width: 40px;
+    height: 40px;
+  }
   .arrow_right {
     width: 100px;
     height: 100px;
@@ -28,12 +32,12 @@ const Wrapper = styled.div`
     border-left: 1px solid var(--secondaryColor);
     cursor: pointer;
     transition: all 0.2s ease-in;
-    @media (max-width: 479px){
-        width: 40px;
-        height: 40px;
+    @media (max-width: 479px) {
+      width: 40px;
+      height: 40px;
     }
   }
-  .arrow_right:hover{
-      transform: rotate(-45deg)scale(1.1);
+  .arrow_right:hover {
+    transform: rotate(-45deg) scale(1.1);
   }
 `

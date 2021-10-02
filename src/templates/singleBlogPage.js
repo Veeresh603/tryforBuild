@@ -125,7 +125,6 @@ function SingleBlogPage({ data }) {
               <AudioWave>
                 <audio
                   id="track"
-                  controls
                   src={data.strapiBlogs.audio_file.audio_file.url}
                 />
               </AudioWave>

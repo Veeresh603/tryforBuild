@@ -1,8 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { StaticImage } from "gatsby-plugin-image"
 import right from "../../images/whoweareright.png"
-import left from "../../images/whoweareleft.png"
 
 import HeadingBorderAnimation from "../HeadingBorderAnim"
 import NumberCounter from "../NumberCounter"
@@ -11,7 +9,6 @@ function WhoWeAre(props) {
   const [show, setShow] = React.useState(false)
 
   const handleShow = () => {
-
     if (window.scrollY >= 3200) {
       setShow(true)
     } else {
@@ -91,24 +88,30 @@ const Wrapper = styled.div`
     display: flex;
     width: 80%;
     justify-content: flex-start;
-
+    @media (max-width: 991px) {
+      width: 80%;
+    }
     h2 {
       font-size: 24px;
       font-weight: 600;
       color: #6f62df !important;
     }
   }
-  .main_counter_wrapper{
+  .main_counter_wrapper {
     width: 80%;
     margin-top: 90px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    @media (max-width: 991px) {
+      width: 100%;
+      margin-top: 0px;
+    }
   }
   .wrapper_section {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    min-width: 200px;
     height: auto;
     align-items: center;
     .number_counter_wrapper {
@@ -117,8 +120,18 @@ const Wrapper = styled.div`
       height: auto;
       justify-content: space-between;
       border-bottom: 2px solid rgba(0, 0, 0, 0.25);
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      @media (max-width: 991px) {
+        width: 100%;
+        border-bottom: 0px;
+      }
+      @media (max-width: 991px) {
+        justify-content: center;
+      }
       .number_counter_section {
-        width: auto;
+        min-width: 200px;
         height: auto;
         position: relative;
       }

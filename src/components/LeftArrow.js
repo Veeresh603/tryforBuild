@@ -18,6 +18,9 @@ const Wrapper = styled.div`
   bottom: 0;
   display: flex;
   align-items: center;
+  @media (max-width: 479px) {
+    display: block;
+  }
   .arrow_left {
     width: 100px;
     height: 100px;
