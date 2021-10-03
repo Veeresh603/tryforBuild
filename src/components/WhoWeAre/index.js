@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import right from "../../images/whoweareright.png"
+import who from "../../images/who.jpg"
 
 import HeadingBorderAnimation from "../HeadingBorderAnim"
 import NumberCounter from "../NumberCounter"
@@ -24,12 +24,7 @@ function WhoWeAre(props) {
     <Wrapper>
       <div className="wrapper_section">
         <div className="section">
-          <div className="section_right">
-            <img src={right} className="right_image" alt="who_we_are_right" />
-            {/* <div className="rectangle_box">
-            <img src={props.data.left_bottom_imge.url} alt="" />
-          </div> */}
-          </div>
+          <div className="section_right" />
 
           <div className="section_middle">
             <div className="heading">
@@ -38,10 +33,6 @@ function WhoWeAre(props) {
             <div className="text">
               <h4>{props.shortDescrption}</h4>
             </div>
-
-            {/* <div className="button">
-            <LinkTo path="/whatwedo">Learn More</LinkTo>{" "}
-          </div> */}
           </div>
         </div>
         <div className="main_counter_wrapper">
@@ -89,12 +80,15 @@ const Wrapper = styled.div`
     width: 80%;
     justify-content: flex-start;
     @media (max-width: 991px) {
-      width: 80%;
+      width: 90%;
     }
     h2 {
       font-size: 24px;
       font-weight: 600;
-      color: #6f62df !important;
+      color: #000 !important;
+      @media (max-width: 479px) {
+        font-size: 22px;
+      }
     }
   }
   .main_counter_wrapper {
@@ -124,16 +118,18 @@ const Wrapper = styled.div`
       justify-content: space-between;
       align-items: center;
       @media (max-width: 991px) {
-        width: 100%;
+        width: 90%;
         border-bottom: 0px;
       }
-      @media (max-width: 991px) {
-        justify-content: center;
-      }
+
       .number_counter_section {
         min-width: 200px;
         height: auto;
         position: relative;
+
+        @media (max-width: 479px) {
+          min-width: 150px;
+        }
       }
       .number_counter_section::after {
         content: "";
@@ -170,19 +166,21 @@ const Wrapper = styled.div`
     justify-content: space-between;
     align-items: flex-start;
     align-content: flex-start;
-    /* height: 714.25px; */
-    .right_image {
-      width: 100%;
-      height: auto;
-      object-fit: contain;
-    }
-    .bg__header {
-      width: 100%;
-      clip-path: circle(86% at 12% 8%);
-    }
+    clip-path: circle(86% at 12% 8%);
+    background-image: url("${who}");
+    background-size: contain;
+    min-height: 200px;
+
+    -ms-filter: grayscale(0.2) sepia(0.5) brightness(90%);
+    -webkit-filter: grayscale(0.2) sepia(0.5) brightness(90%);
+    -moz-filter: grayscale(0.2) sepia(0.5) brightness(90%);
+    -o-filter: grayscale(0.2) sepia(0.5) brightness(90%);
+    filter: grayscale(0.2) sepia(0.5) brightness(90%);
+
     @media (max-width: 767px) {
       height: auto;
-      width: 50%;
+      width: 60%;
+      min-height: 200px;
     }
   }
   .rectangle_box {

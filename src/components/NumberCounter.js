@@ -51,10 +51,16 @@ const Wrapper = styled.div`
     font-size: 18px;
     margin: 0;
     color: #6f62df;
+    @media (max-width: 479px) {
+        font-size: 14px;
+    }
   }
 
   span {
     font-weight: 700;
     font-size: 64px;
+    @media (max-width: 479px) {
+        font-size: 40px;
+    }
   }
 `
