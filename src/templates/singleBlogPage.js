@@ -22,7 +22,8 @@ function SingleBlogPage({ data, location }) {
   const s1 = s - Math.round(s)
   const single = Math.round(s1 * 10)
   const keys = []
-  const keys1 = Seo.keywords.map((k) => keys.push(k.title))
+  const keys1 =
+    Seo === null ? { title } : Seo.keywords.map((k) => keys.push(k.title))
 
   console.log({ keys })
 
