@@ -92,6 +92,9 @@ const Wrapper = styled.div`
     font-size: 18px;
     font-weight: 500;
     font-family: var(--family);
+    @media (max-width: 479px){
+      font-size: 16px
+    }
   }
   .MuiCollapse-container.MuiCollapse-entered {
     box-shadow: 0px 1.45516px 4.36547px rgba(0, 0, 0, 0.25);

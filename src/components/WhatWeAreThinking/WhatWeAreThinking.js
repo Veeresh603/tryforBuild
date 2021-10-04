@@ -182,7 +182,6 @@ const Wrapper = styled.div`
   }
   .section_right {
     width: 100%;
-    margin-top: 100px;
     grid-area: 1/6/2/11;
   }
 
@@ -266,7 +265,6 @@ const Wrapper = styled.div`
   }
   .section_left {
     grid-area: 1/2/2/5;
-    margin-top: 100px;
   }
   .WithStyles\(ForwardRef\(AccordionSummary\)\)-root-15 {
     border-bottom: 1px solid #fff;

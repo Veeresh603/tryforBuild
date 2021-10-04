@@ -3,23 +3,22 @@ import styled from "styled-components"
 import who from "../../images/who.jpg"
 
 import HeadingBorderAnimation from "../HeadingBorderAnim"
-import NumberCounter from "../NumberCounter"
 
 function WhoWeAre(props) {
-  const [show, setShow] = React.useState(false)
+  // const [show, setShow] = React.useState(false)
 
-  const handleShow = () => {
-    if (window.scrollY >= 3200) {
-      setShow(true)
-    } else {
-      setShow(false)
-    }
-  }
+  // const handleShow = () => {
+  //   if (window.scrollY >= 3200) {
+  //     setShow(true)
+  //   } else {
+  //     setShow(false)
+  //   }
+  // }
 
-  React.useEffect(() => {
-    window.addEventListener("scroll", handleShow)
-    return () => window.removeEventListener("scroll", handleShow)
-  }, [])
+  // React.useEffect(() => {
+  //   window.addEventListener("scroll", handleShow)
+  //   return () => window.removeEventListener("scroll", handleShow)
+  // }, [])
   return (
     <Wrapper>
       <div className="wrapper_section">
@@ -35,7 +34,7 @@ function WhoWeAre(props) {
             </div>
           </div>
         </div>
-        <div className="main_counter_wrapper">
+        {/* <div className="main_counter_wrapper">
           <div className="counter_heading_heading">
             <h2>Lorem ipsum</h2>
           </div>
@@ -55,7 +54,7 @@ function WhoWeAre(props) {
               </div>
             </div>
           )}
-        </div>
+        </div> */}
       </div>
     </Wrapper>
   )
@@ -93,7 +92,7 @@ const Wrapper = styled.div`
   }
   .main_counter_wrapper {
     width: 80%;
-    margin-top: 90px;
+    margin-top: 0px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -166,10 +165,10 @@ const Wrapper = styled.div`
     justify-content: space-between;
     align-items: flex-start;
     align-content: flex-start;
-    clip-path: circle(86% at 12% 8%);
+    clip-path: circle(67.6% at 12% 8%);
     background-image: url("${who}");
     background-size: contain;
-    min-height: 200px;
+    min-height: 300px;
 
     -ms-filter: grayscale(0.2) sepia(0.5) brightness(90%);
     -webkit-filter: grayscale(0.2) sepia(0.5) brightness(90%);

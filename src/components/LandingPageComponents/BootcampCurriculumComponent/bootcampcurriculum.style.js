@@ -52,6 +52,9 @@ const Wrapper = styled.div`
   li {
     font-size: 18px;
     font-weight: 400;
+    @media (max-width: 767px) {
+      font-size: 14px;
+    }
   }
   a {
     width: auto;

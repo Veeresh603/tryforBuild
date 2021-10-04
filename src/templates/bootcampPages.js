@@ -14,6 +14,7 @@ import BootcampFrequentlyAsked from "../components/LandingPageComponents/Bootcam
 import BootcampPricing from "../components/BootcampLandingPages/BootcampPricing"
 import Seo from "../components/Seo/seo"
 import BootcampEvents from "../components/BootcampLandingPages/BootcampEvents"
+
 function bootcampPages({ data, location }) {
   const {
     bootcamp_banner,
@@ -35,11 +36,10 @@ function bootcampPages({ data, location }) {
 
   return (
     <Container>
-   <Seo
+      <Seo
         title={bootcamp_banner.title}
         description={bootcamp_banner.bootcamp_banner_desc}
         location={`${location.pathname}`}
-
         image={`https://certisured.com${about_bootcamp1.about_bootcamp_media.url}`}
         keywords={[
           `certisured`,
@@ -67,10 +67,7 @@ function bootcampPages({ data, location }) {
         ]}
       />
       <Wrapper>
-        <BootcampBanner
-          data={bootcamp_banner}
-       
-        />
+        <BootcampBanner data={bootcamp_banner} />
         <BootcampHighlights data={bootcamp_highlights} />
         <LanguageTools data={tools_covered} />
         <AboutBootCamp data={about_bootcamp1} />
@@ -122,7 +119,6 @@ const Wrapper = styled.div`
   justify-content: flex-start;
   flex-wrap: wrap;
   > h1 {
-    
     border-bottom: 1px solid #ff002b;
     @media (max-width: 479px) {
       text-align: center;
@@ -160,7 +156,6 @@ export const query = graphql`
         span
         title
         about_bootcamp_events1 {
-          
           title
           description
         }
@@ -212,7 +207,7 @@ export const query = graphql`
         }
         id
       }
-      bootcamp_offers{
+      bootcamp_offers {
         description
         span
         title
@@ -223,7 +218,6 @@ export const query = graphql`
           title
           date_and_time
           button_label
-          
         }
       }
       bootcamp_faq {
@@ -270,8 +264,7 @@ export const query = graphql`
         text
         technologyStack_media {
           technologyStack_media {
-                url
-            
+            url
           }
         }
       }
@@ -294,4 +287,3 @@ export const query = graphql`
     }
   }
 `
-

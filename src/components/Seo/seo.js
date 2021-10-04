@@ -22,7 +22,6 @@ const query = graphql`
 const SEO = ({ title, description, image, lang, meta, keywords, location }) => {
   const { site } = useStaticQuery(query)
   const descriptionSlice = description.slice(0, 149);
-  console.log(location);
   const {
     siteDescrption,
     siteTitle,

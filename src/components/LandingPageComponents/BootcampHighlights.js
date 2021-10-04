@@ -56,7 +56,6 @@ function BootcampHighlights({ data }) {
           return (
             <section>
               <div className="bootcamp_high_light_box" key={d.id}>
-                <img className="bootcamp_icon" src={shield} alt="certisured" />
                 {/* <HiOutlineShieldCheck className="bootcamp_icon" /> */}
                 <p>{d.main_heading}</p>
               </div>
@@ -108,8 +107,12 @@ const Wrapper = styled.div`
     display: flex !important;
     flex-direction: column;
     width: calc(100% - 20px);
-    min-height: 200px;
-    background: linear-gradient(150.61deg, #ffffff 0%, #ededed 86.02%);
+    min-height: 150px;
+    background: linear-gradient(
+      149.49deg,
+      var(--primaryColor) 0%,
+      var(--thirdColor) 72.55%
+    );
     box-shadow: 0px 1.47178px 7.35892px rgba(0, 0, 0, 0.25);
     border-radius: 18.3973px;
     padding: 20px;

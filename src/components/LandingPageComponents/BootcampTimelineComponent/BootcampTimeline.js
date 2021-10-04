@@ -27,7 +27,7 @@ function BootcampTimeline({ days }) {
         marginTop: "-20px",
       }
     : {
-        fontSize: "26px",
+        fontSize: "22px",
         fontWeight: "600",
         color: "var(--secondaryColor)",
         marginTop: "-31px",

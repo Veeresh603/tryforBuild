@@ -6,7 +6,7 @@ import Wrapper from "./bootcampcurriculum.style"
 import scrollTo from "gatsby-plugin-smoothscroll"
 
 function BootcampCurriculum(props) {
-  const {days, data} = props
+  const { days, data } = props
   return (
     <Wrapper>
       <div className="bootcamp_curriculum_heading">
@@ -14,15 +14,23 @@ function BootcampCurriculum(props) {
         <h1>{data.title}</h1>
       </div>
       <div className="bootcamp_curriculum_download_button">
-{    !props.brouchre ? <button className="apply_now" onClick={() => scrollTo("#pricing1")}>Apply now</button> :  <FormDialog mailchimp={true} title={data.curriculum_brochure} slug={props.slug} />
-}      </div>
+        {!props.brouchre ? (
+          <button className="apply_now" onClick={() => scrollTo("#pricing1")}>
+            Apply now
+          </button>
+        ) : (
+          <FormDialog
+            mailchimp={true}
+            title={data.curriculum_brochure}
+            slug={props.slug}
+          />
+        )}{" "}
+      </div>
       <div className="bootcamp_curriculum_desc">
-          <ReactMarkdown>
-            {data.description}
-          </ReactMarkdown>
+        <ReactMarkdown>{data.description}</ReactMarkdown>
       </div>
       <div className="bootcamp_curriculum_timeline">
-          <BootcampTimeline days={days}/>
+        <BootcampTimeline days={days} />
       </div>
     </Wrapper>
   )

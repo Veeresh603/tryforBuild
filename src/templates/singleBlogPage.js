@@ -7,11 +7,13 @@ import loadable from "@loadable/component"
 import AudioWave from "../components/WaveFrom/index"
 import { graphql, Link } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
+import SEo from "../components/Seo/seo"
 
 const Slider = loadable(() => import("../components/helper/react-slick"))
 
-function SingleBlogPage({ data }) {
-  const { blogs_categories, title, Descrption, blog_author } = data.strapiBlogs
+function SingleBlogPage({ data, location }) {
+  const { blogs_categories, title, Descrption, blog_author, Seo } =
+    data.strapiBlogs
   const [authorL, setAuthorL] = React.useState()
   const [length, setLength] = React.useState()
   const l = length - Math.round(length)
@@ -19,11 +21,15 @@ function SingleBlogPage({ data }) {
   const s = Descrption.length / 200
   const s1 = s - Math.round(s)
   const single = Math.round(s1 * 10)
+  const keys = []
+  const keys1 = Seo.keywords.map((k) => keys.push(k.title))
+
+  console.log({ keys })
+
   React.useEffect(() => {
     const Bloglength = data.allStrapiBlogAuthors.nodes.filter(
       (d) => d.name_and_surname === blog_author.name_and_surname
     )
-
     console.log(Bloglength[0].blogs.length)
     setAuthorL(Bloglength[0].blogs.length)
   }, [])
@@ -68,6 +74,15 @@ function SingleBlogPage({ data }) {
 
   return (
     <Wrapper>
+      {Seo && (
+        <SEo
+          title={Seo.title}
+          description={Seo.short_description}
+          location={`${location.pathname}`}
+          image={Seo.image.url}
+          keywords={keys}
+        />
+      )}
       <div className="heading">
         <a to="/blogs" href="/blogs">
           blogs
@@ -528,31 +543,39 @@ const Wrapper = styled.div`
       font-weight: 600;
       font-size: 24px;
       letter-spacing: 0.07em;
+      color: var(--secondaryColor);
     }
     h2 {
       font-weight: 500;
       font-size: 22px;
       letter-spacing: 0.07em;
+      color: var(--secondaryColor);
     }
     h3 {
       font-weight: 500;
       font-size: 20px;
       letter-spacing: 0.07em;
+      color: var(--secondaryColor);
     }
     h4 {
       font-weight: 500;
       font-size: 18px;
       letter-spacing: 0.07em;
+      color: var(--secondaryColor);
     }
     h5 {
       font-weight: 500;
       font-size: 16px;
       letter-spacing: 0.07em;
+      color: var(--secondaryColor);
     }
     a {
       font-weight: 700;
-      font-size: 26.81px;
+      font-size: 18px;
       letter-spacing: 0.07em;
+      @media (max-width: 550px) {
+        font-size: 17px;
+      }
     }
 
     p {
@@ -856,6 +879,17 @@ export const query = graphql`
       Descrption
       blog_slug
       published_date
+      Seo {
+        short_description
+        keywords {
+          title
+          id
+        }
+        title
+        image {
+          url
+        }
+      }
       audio_file {
         title
         show_or_hide
